@@ -1,3 +1,0 @@
-echo 23.101.130.247 microsoft.gointeract.io >> %SystemRoot%\System32\drivers\etc\hosts
-
-Go to web: https://tinyurl.com/getCIDMS
