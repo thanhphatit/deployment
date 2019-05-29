@@ -1,4 +1,3 @@
-:: Author - Hung Hoang
 @echo off
 pushd %~dp0
 set /a var=0
