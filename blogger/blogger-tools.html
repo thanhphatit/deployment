@@ -128,41 +128,52 @@ footer {
 <section>
   <nav>
     <ul>
-      <li><button class="btn btn-success btn-lg" onclick="openCity(event, 'tab1')">Google PDF To Blogger</button></li>
+      <li><button class="btn btn-success btn-lg" onclick="openCity(event, 'tab1')" style="width:90%">Google PDF To Blogger</button></li>
 	  <br>
-      <li><button class="btn btn-primary btn-lg" onclick="openCity(event, 'tab2')">Image To Blogger</button></li>
+      <li><button class="btn btn-primary btn-lg" onclick="openCity(event, 'tab2')" style="width:90%">Image To Blogger</button></li>
 	  <br>
-      <li><button class="btn btn-warning btn-lg" onclick="openCity(event, 'tab3')">Get Link Show URL</button></li>
+      <li><button class="btn btn-warning btn-lg" onclick="openCity(event, 'tab3')" style="width:90%">Get Link Show URL</button></li>
 	  <br>
-	  <li><button class="btn btn-danger btn-lg" onclick="openCity(event, 'tab4')">Get Link Hide URL</button></li>
+	  <li><button class="btn btn-danger btn-lg" onclick="openCity(event, 'tab4')" style="width:90%">Get Link Hide URL</button></li>
     </ul>
   </nav>
   
   <article>
 	<div id="tab1" class="tabcontent">
 		<h3>Google PDF To Blogger</h3>
-		<b>Google PDF URL:</b> <input type="text" name="googlepdfurl">
+		<b>Google PDF URL:</b><br><input type="text" name="googlepdfurl" style="width:100%" onchange="mygooglepdf(this.value)"><br/>
+		<b>Blogger PDF URL:</b><br><input type="text" name="bloggerpdfurl" style="width:100%" id="googlepdfurl">
 		<br/>
-		<br/>
-		<b>Blogger PDF URL:</b> <input type="text" name="bloggerpdfurl">
+		<br>
+		<button type="button" class="btn btn-success btn-lg" style="text-align:center" onclick="copypdfurl()">COPY</button>
+		<p id="demo"></p>
 	</div>
 
 	<div id="tab2" class="tabcontent">
 		<h3>Image To Blogger</h3>
-		<b>Image URL:</b>
-		
+		<b>Image URL:</b><br><input type="text" name="imageurl" style="width:100%"><br/>
+		<b>Blogger Image URL:</b><br><input type="text" name="bloggerimageurl" style="width:100%">
+		<br/>
+		<br>
+		<button type="button" class="btn btn-success btn-lg" style="text-align:center">COPY</button>
 	</div>
 
 	<div id="tab3" class="tabcontent">
 		<h3>Get Link Show URL</h3>
-		<b>Link Download:</b>
-		
+		<b>Link Download:</b><br><input type="text" name="imageurl" style="width:100%"><br/>
+		<b>Blogger Get Link Show:</b><br><input type="text" name="bloggershowurl" style="width:100%">
+		<br/>
+		<br>
+		<button type="button" class="btn btn-success btn-lg" style="text-align:center">COPY</button>
 	</div>
 	
 	<div id="tab4" class="tabcontent">
 		<h3>Get Link Hide URL</h3>
-		<b>Link Download:</b>
-		
+		<b>Link Download:</b><br><input type="text" name="imageurl" style="width:100%"><br/>
+		<b>Blogger Get Link Hide:</b><br><input type="text" name="bloggerhideurl" style="width:100%">
+		<br/>
+		<br>
+		<button type="button" class="btn btn-success btn-lg" style="text-align:center">COPY</button>
 	</div>
   </article>
 </section>
@@ -183,6 +194,18 @@ function openCity(evt, cityName) {
   }
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
+}
+document.getElementById("googlepdfurl").addEventListener("change", mygooglepdf);
+function mygooglepdf(val)
+{
+	var str = val;
+	var res = str.slice(0,-16);
+	document.getElementById("googlepdfurl").value ='<iframe height="800" src="'+ res + 'preview" width="615"></iframe>';
+}
+function copypdfurl() {
+  var copyText = document.getElementById("googlepdfurl");
+  copyText.select();
+  document.execCommand("copy");
 }
 </script>
 </body>
