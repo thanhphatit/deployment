@@ -151,29 +151,29 @@ footer {
 
 	<div id="tab2" class="tabcontent">
 		<h3>Image To Blogger</h3>
-		<b>Image URL:</b><br><input type="text" name="imageurl" style="width:100%"><br/>
-		<b>Blogger Image URL:</b><br><input type="text" name="bloggerimageurl" style="width:100%">
+		<b>Image URL:</b><br><input type="text" name="imageurl" style="width:100%" onchange="myimage(this.value)"><br/>
+		<b>Blogger Image URL:</b><br><input type="text" name="bloggerimageurl" style="width:100%" id="imagecode">
 		<br/>
 		<br>
-		<button type="button" class="btn btn-success btn-lg" style="text-align:center">COPY</button>
+		<button type="button" class="btn btn-success btn-lg" style="text-align:center" onclick="copyimageurl()">COPY</button>
 	</div>
 
 	<div id="tab3" class="tabcontent">
 		<h3>Get Link Show URL</h3>
-		<b>Link Download:</b><br><input type="text" name="imageurl" style="width:100%"><br/>
-		<b>Blogger Get Link Show:</b><br><input type="text" name="bloggershowurl" style="width:100%">
+		<b>Link Download:</b><br><input type="text" name="imageurl" style="width:100%" onchange="myshowurl(this.value)"><br/>
+		<b>Blogger Get Link Show:</b><br><input type="text" name="bloggershowurl" style="width:100%" id="showurl">
 		<br/>
 		<br>
-		<button type="button" class="btn btn-success btn-lg" style="text-align:center">COPY</button>
+		<button type="button" class="btn btn-success btn-lg" style="text-align:center" onclick="copyshowurl()">COPY</button>
 	</div>
 	
 	<div id="tab4" class="tabcontent">
 		<h3>Get Link Hide URL</h3>
-		<b>Link Download:</b><br><input type="text" name="imageurl" style="width:100%"><br/>
-		<b>Blogger Get Link Hide:</b><br><input type="text" name="bloggerhideurl" style="width:100%">
+		<b>Link Download:</b><br><input type="text" name="imageurl" style="width:100%" onchange="myhideurl(this.value)"><br/>
+		<b>Blogger Get Link Hide:</b><br><input type="text" name="bloggerhideurl" style="width:100%" id="hideurl">
 		<br/>
 		<br>
-		<button type="button" class="btn btn-success btn-lg" style="text-align:center">COPY</button>
+		<button type="button" class="btn btn-success btn-lg" style="text-align:center" onclick="copyhideurl()">COPY</button>
 	</div>
   </article>
 </section>
@@ -196,14 +196,44 @@ function openCity(evt, cityName) {
   evt.currentTarget.className += " active";
 }
 document.getElementById("googlepdfurl").addEventListener("change", mygooglepdf);
+document.getElementById("imagecode").addEventListener("change", mygooglepdf);
+document.getElementById("showurl").addEventListener("change", mygooglepdf);
+document.getElementById("hideurl").addEventListener("change", mygooglepdf);
 function mygooglepdf(val)
 {
 	var str = val;
 	var res = str.slice(0,-16);
 	document.getElementById("googlepdfurl").value ='<iframe height="800" src="'+ res + 'preview" width="615"></iframe>';
 }
+function myimage(val)
+{
+	document.getElementById("imagecode").value ='<img src="'+val+'" width="650" height="300" />';
+}
+function myshowurl(val)
+{
+	document.getElementById("showurl").value ='https://www.itblognote.com/p/blog-page.html?url='+val;
+}
+function myhideurl(val)
+{
+	document.getElementById("hideurl").value ='https://www.itblognote.com/p/get-link.html?id='+val;
+}
 function copypdfurl() {
   var copyText = document.getElementById("googlepdfurl");
+  copyText.select();
+  document.execCommand("copy");
+}
+function copyimageurl() {
+  var copyText = document.getElementById("imagecode");
+  copyText.select();
+  document.execCommand("copy");
+}
+function copyshowurl() {
+  var copyText = document.getElementById("showurl");
+  copyText.select();
+  document.execCommand("copy");
+}
+function copyhideurl() {
+  var copyText = document.getElementById("hideurl");
   copyText.select();
   document.execCommand("copy");
 }
