@@ -139,6 +139,13 @@ footer {
   </nav>
   
   <article>
+	<div id="hide">
+		<h3>Giới Thiệu</h3>
+		<p>Thành Phát IT</p>
+		<p>Facebook: https://www.facebook.com/thanhphatit</p>
+		<p>Blog: https://www.itblognote.com/</p>
+	</div>
+	
 	<div id="tab1" class="tabcontent">
 		<h3>Google PDF To Blogger</h3>
 		<b>Google PDF URL:</b><br><input type="text" name="googlepdfurl" style="width:100%" onchange="mygooglepdf(this.value)"><br/>
@@ -185,6 +192,7 @@ footer {
 function openCity(evt, cityName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
+  hide.style.display="none";
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
   }
@@ -238,5 +246,6 @@ function copyhideurl() {
   document.execCommand("copy");
 }
 </script>
+<script src="https://thanhphatit.github.io/deployment/javascript/block-viewsource.js"></script>
 </body>
 </html>
