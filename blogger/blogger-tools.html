@@ -154,7 +154,7 @@ footer {
 	  <br>
 	  <li><button class="btn btn-danger btn-lg" onclick="openCity(event, 'tab4')" style="width:90%">Get Link Hide URL</button></li>
 	  <br>
-	  <li><button class="btn btn-info btn-lg" onclick="openCity(event, 'tab5')" style="width:90%">#</button></li>
+	  <li><button class="btn btn-info btn-lg" onclick="openCity(event, 'tab5')" style="width:90%">Change Code HTML</button></li>
 	  <br>
 	  <li><button class="btn btn-success btn-lg" onclick="openCity(event, 'tab6')" style="width:90%">#</button></li>
 	  <br>
@@ -214,6 +214,16 @@ footer {
 		<br>
 		<button type="button" class="btn btn-success btn-lg" style="text-align:center" onclick="copyhideurl()">COPY</button>
 	</div>
+	<div id="tab5" class="tabcontent">
+		<h3>CODE</h3>
+		<b>Your Code:</b><br>
+		<textarea name="yourcode" style="width:100%; height: 200px;" onchange="mycode(this.value)"></textarea>
+		<br/>
+		<b>Blogger Of Code:</b><br>
+		<br/>
+		<textarea style="width:100%; height: 200px;" id="codeblogger" name="bloggerofcode"></textarea>
+		<button type="button" class="btn btn-success btn-lg" style="text-align:center" onclick="copycodeblogger()">COPY</button>
+	</div>
   </article>
 </section>
 
@@ -239,6 +249,7 @@ document.getElementById("googlepdfurl").addEventListener("change", mygooglepdf);
 document.getElementById("imagecode").addEventListener("change", myimage);
 document.getElementById("showurl").addEventListener("change", myshowurl);
 document.getElementById("hideurl").addEventListener("change", myhideurl);
+document.getElementById("codeblogger").addEventListener("change", mycode);
 function mygooglepdf(val)
 {
 	var str = val;
@@ -257,6 +268,10 @@ function myhideurl(val)
 {
 	document.getElementById("hideurl").value ='https://www.itblognote.com/p/get-link.html?id='+val;
 }
+function mycode(val)
+{
+	document.getElementById("codeblogger").value ='<pre>'+val+'</pre>';
+}
 function copypdfurl() {
   var copyText = document.getElementById("googlepdfurl");
   copyText.select();
@@ -274,6 +289,11 @@ function copyshowurl() {
 }
 function copyhideurl() {
   var copyText = document.getElementById("hideurl");
+  copyText.select();
+  document.execCommand("copy");
+}
+function copycodeblogger() {
+  var copyText = document.getElementById("codeblogger");
   copyText.select();
   document.execCommand("copy");
 }
